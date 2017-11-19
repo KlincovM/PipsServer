@@ -19,12 +19,11 @@ public class BrojController {
 	BrojService brojService;
 	
 	@RequestMapping("/uzmiSledeciBroj")
-	public @ResponseBody String uzmiSledeciBroj(@RequestParam("korisnikID")int korisnikID,
-												@RequestParam("aparatID")int aparatID,
+	public @ResponseBody String uzmiSledeciBroj(@RequestParam("aparatID")int aparatID,
+											@RequestParam("korisnikID")int korisnikID,
 												@RequestParam("salterID")int salterID)
 	{
 		Broj broj = brojService.uzmiSlobodanBroj(korisnikID, aparatID, salterID);
-		Gson brojGson = new Gson();
-		return brojGson.toJson(broj);
+		return broj.toString();
 	}
 }
